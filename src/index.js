@@ -67,7 +67,7 @@ module.exports = {
       root.load(options.key);
     }
 
-    root.show = () => window.zE('messenger', 'open');
+    root.open = () => window.zE('messenger', 'open');
     root.close = () => window.zE('messenger', 'close');
     root.hide = () => window.zE('messenger', 'hide');
     root.show = () => window.zE('messenger', 'show');
