@@ -63,7 +63,7 @@ module.exports = {
       root.load(options.key);
     }
 
-    root.showMessanger = window.zE('messenger', 'show');
+    root.showMessanger = () => window.zE('messenger', 'show');
     root.hide = () => window.zE("webWidget", "hide");
     root.show = () => window.zE("webWidget", "show");
     root.logout = () => window.zE("webWidget", "logout");
