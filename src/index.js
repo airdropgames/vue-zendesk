@@ -49,13 +49,17 @@ module.exports = {
 
         root.$emit("loaded", event);
 
-        window.zE("webWidget:on", "open", () => {
-          root.$emit("open");
-        });
+        window.zE("messenger:on", "open", () => {
+          root.$emit("open")
+        })
 
-        window.zE("webWidget:on", "close", () => {
-          root.$emit("close");
-        });
+        window.zE("messenger:on", "close", () => {
+          root.$emit("close")
+        })
+
+        window.zE("messenger:on", "unreadMessages", (count) => {
+          root.$emit("unreadMessages", count)
+        })
       };
     };
 
@@ -63,21 +67,11 @@ module.exports = {
       root.load(options.key);
     }
 
-    root.showMessanger = () => window.zE('messenger', 'show');
-    root.hide = () => window.zE("webWidget", "hide");
-    root.show = () => window.zE("webWidget", "show");
-    root.logout = () => window.zE("webWidget", "logout");
-    root.identify = user => window.zE("webWidget", "identify", user);
-    root.prefill = user => window.zE("webWidget", "prefill", user);
-    root.setLocale = locale => window.zE("webWidget", "setLocale", locale);
-    root.updateSettings = settings =>
-      window.zE("webWidget", "updateSettings", settings);
-    root.clear = () => window.zE("webWidget", "clear");
-    root.updatePath = options => window.zE("updatePath", "clear", options);
-    root.toggle = () => window.zE("webWidget", "toggle");
-    root.reset = () => window.zE("webWidget", "reset");
-    root.close = () => window.zE("webWidget", "close");
-    root.open = () => window.zE("webWidget", "open");
+    root.show = () => window.zE('messenger', 'open');
+    root.close = () => window.zE('messenger', 'close');
+    root.hide = () => window.zE('messenger', 'hide');
+    root.show = () => window.zE('messenger', 'show');
+    
 
     Object.defineProperty(root, "zE", {
       get: function get() {
